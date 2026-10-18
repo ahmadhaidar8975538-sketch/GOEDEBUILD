@@ -1,0 +1,66 @@
+{
+	"geode": "4.6.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "yourname.autodesign",
+	"name": "Auto Design",
+	"version": "v1.0.0",
+	"developer": "YourName",
+	"description": "Select your layout blocks in the editor, press the black AUTO box, and it auto-decorates them extreme-demon style.",
+	"tags": ["editor", "utility"],
+	"settings": {
+		"outline": {
+			"type": "bool",
+			"name": "Outline",
+			"description": "Add thin outline bars along every exposed block edge.",
+			"default": true
+		},
+		"corners": {
+			"type": "bool",
+			"name": "Corner Pieces",
+			"description": "Add small square pieces on exposed outer corners.",
+			"default": true
+		},
+		"inner-detail": {
+			"type": "bool",
+			"name": "Inner Detail",
+			"description": "Add a smaller inset square in the middle of every selected block.",
+			"default": true
+		},
+		"thickness": {
+			"type": "int",
+			"name": "Outline Thickness",
+			"description": "Outline thickness in editor units (a block is 30 units).",
+			"default": 6,
+			"min": 2,
+			"max": 12,
+			"control": { "slider": true, "input": true }
+		},
+		"color-channel": {
+			"type": "int",
+			"name": "Deco Color Channel",
+			"description": "Color channel for generated deco. 0 = leave default. 1-999 are normal channels, 1005 = P1 color, 1006 = P2 color.",
+			"default": 0,
+			"min": 0,
+			"max": 1010
+		},
+		"no-touch": {
+			"type": "bool",
+			"name": "Make Deco No Touch",
+			"description": "Generated deco will not collide with the player. Keep this on.",
+			"default": true
+		},
+		"max-objects": {
+			"type": "int",
+			"name": "Max Objects Per Press",
+			"description": "Safety cap so a huge selection can't freeze the editor.",
+			"default": 2500,
+			"min": 100,
+			"max": 20000
+		}
+	}
+}
