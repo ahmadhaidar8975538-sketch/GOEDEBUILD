@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
 
-set(CMAKE_CXX_STANDARD 20 CACHE STRING "" FORCE)
-set(CMAKE_CXX_STANDARD_REQUIRED ON CACHE BOOL "" FORCE)
-set(CMAKE_CXX_EXTENSIONS OFF CACHE BOOL "" FORCE)
-
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
     set(CMAKE_OSX_ARCHITECTURES "arm64")
 else()
@@ -11,6 +7,9 @@ else()
 endif()
 
 project(AutoDesign VERSION 1.0.0)
+
+# Matikan Precompiled Headers biar gak nabrak standar C++23 bawaan SDK
+set(CMAKE_DISABLE_PRECOMPILE_HEADERS ON)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
@@ -26,4 +25,5 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 setup_geode_mod(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "" FORCE)
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON CACHE BOOL "" FORCE)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
